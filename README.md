@@ -1,1 +1,0 @@
-# jayanthkanala.github.io
