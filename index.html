@@ -6,20 +6,19 @@
   <title>Jayanth Kanala — Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --bg: #0b1220;
-      --paper: #ffffff;
-      --ink: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --accent: #2563eb;
-      --accent2: #06b6d4;
-      --chip: #f1f5f9;
-      --sidebar: #0b1220;
-      --sidebarInk: #e5e7eb;
+      --page: #eceae4;
+      --paper: #faf9f6;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --muted2: #78716c;
+      --line: #e7e5e0;
+      --line-strong: #d6d3cb;
+      --accent: #0f766e;
+      --accent-soft: rgba(15, 118, 110, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -27,172 +26,261 @@
     html, body {
       margin: 0;
       padding: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
       color: var(--ink);
-      background: #f3f4f6;
+      background: var(--page);
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      background-size: 0 1px;
+      transition: background-size 0.25s ease, color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent);
+      background-size: 100% 1px;
+    }
 
     .controls {
       display: flex;
       gap: 12px;
       justify-content: center;
-      padding: 18px 16px 0;
+      padding: 20px 16px 0;
       flex-wrap: wrap;
     }
 
     .btn {
-      border: 1px solid #cbd5e1;
-      background: white;
-      color: #0f172a;
-      padding: 10px 14px;
-      border-radius: 10px;
+      border: 1px solid var(--line-strong);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 8px;
       font-weight: 600;
+      font-size: 13px;
+      font-family: inherit;
       display: inline-flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-      transition: transform .08s ease, box-shadow .12s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(28, 25, 23, 0.08);
+      border-color: var(--accent);
     }
 
     .btn.primary {
-      border: 1px solid rgba(37, 99, 235, 0.35);
-      background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(6,182,212,1) 100%);
-      color: white;
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #0d6660;
+      border-color: #0d6660;
     }
 
     .page {
       width: 210mm;
       min-height: 297mm;
-      margin: 18px auto 28px;
+      margin: 18px auto 36px;
       background: var(--paper);
-      border-radius: 18px;
+      border-radius: 2px;
       overflow: hidden;
-      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18);
+      box-shadow: 0 24px 64px rgba(28, 25, 23, 0.1);
       position: relative;
-    }
-
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(1200px 420px at 90% -10%, rgba(37,99,235,.16), transparent 55%),
-        radial-gradient(900px 360px at 18% 0%, rgba(6,182,212,.14), transparent 55%);
-      pointer-events: none;
     }
 
     .resume {
-      display: grid;
-      grid-template-columns: 78mm 1fr;
+      padding: 36px 42px 32px;
       position: relative;
       z-index: 1;
-      min-height: 297mm;
     }
 
-    .sidebar {
-      background: linear-gradient(180deg, rgba(11,18,32,1) 0%, rgba(15,23,42,1) 100%);
-      color: var(--sidebarInk);
-      padding: 26px 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sidebar::after {
-      content: "";
-      position: absolute;
-      inset: -120px -140px auto auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(37,99,235,0.9), rgba(6,182,212,0.4), transparent 65%);
-      filter: blur(0px);
-      opacity: 0.55;
-      transform: rotate(20deg);
-      pointer-events: none;
-    }
-
-    .main {
-      padding: 28px 30px 24px;
+    .header {
+      text-align: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line-strong);
+      margin-bottom: 22px;
     }
 
     .name {
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       margin: 0;
+      line-height: 1.15;
+      color: var(--ink);
     }
 
     .headline {
-      margin: 8px 0 0;
-      font-weight: 650;
-      color: rgba(229, 231, 235, 0.92);
-      font-size: 13.5px;
-      line-height: 1.35;
+      margin: 10px 0 0;
+      font-weight: 500;
+      color: var(--muted2);
+      font-size: 14px;
+      line-height: 1.4;
     }
 
-    .badge-row {
+    .contact-row {
       display: flex;
-      gap: 8px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 14px;
       margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
     }
 
-    .badge {
-      font-size: 11.5px;
-      font-weight: 650;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.25);
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px);
-      color: rgba(226,232,240,0.92);
+    .contact-row span,
+    .contact-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .sidebar-section {
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(148,163,184,0.16);
-    }
-
-    .sidebar-title {
+    .contact-row i {
+      color: var(--accent);
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      margin-bottom: 12px;
+      padding-bottom: 0;
+      border-bottom: none;
+      position: relative;
+    }
+
+    .section-title {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(226,232,240,0.7);
-      margin: 0 0 10px;
+      color: var(--accent);
+      margin: 0;
+      padding-bottom: 8px;
     }
 
-    .contact-list {
-      display: grid;
-      gap: 10px;
+    .section-title::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 100%;
+      margin-top: 8px;
+      background: var(--line);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.55s ease;
     }
 
-    .contact-item {
+    .section.in-view .section-title::after {
+      transform: scaleX(1);
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--line) 28%);
+    }
+
+    .summary {
+      font-size: 13.2px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .timeline {
       display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 10px;
+      gap: 0;
+    }
+
+    .item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .item-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
       align-items: start;
-      font-size: 12.2px;
-      line-height: 1.35;
-      color: rgba(226,232,240,0.92);
-      word-break: break-word;
+      margin-bottom: 4px;
     }
 
-    .contact-item i { color: rgba(56, 189, 248, 0.95); margin-top: 2px; }
+    .role {
+      margin: 0;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
 
-    .mini {
-      font-size: 11.8px;
-      color: rgba(226,232,240,0.78);
-      line-height: 1.45;
+    .date {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted2);
+      white-space: nowrap;
+    }
+
+    .org {
+      margin: 0;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .bullets {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.5;
+    }
+
+    .bullets li { margin: 0 0 4px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 20px;
+    }
+
+    .edu-row { display: grid; gap: 3px; }
+    .edu-row .degree { font-weight: 700; font-size: 13.5px; }
+    .edu-row .school { font-size: 12.6px; color: var(--muted); }
+    .edu-row .meta { font-size: 12.2px; color: var(--muted2); font-weight: 600; }
+
+    .proj { display: grid; gap: 6px; }
+    .proj .p-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .proj .p-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.5;
     }
 
     .chips {
@@ -203,195 +291,90 @@
 
     .chip {
       font-size: 11.5px;
-      font-weight: 650;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(148,163,184,0.18);
-      color: rgba(226,232,240,0.9);
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      border: 1px solid transparent;
+      color: var(--ink);
     }
 
-    .skill-bars {
-      display: grid;
-      gap: 10px;
-    }
-
-    .skill {
+    .skill-list {
       display: grid;
       gap: 6px;
-    }
-
-    .skill .label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: rgba(226,232,240,0.9);
-    }
-
-    .bar {
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(148,163,184,0.18);
-      overflow: hidden;
-    }
-
-    .bar > span {
-      display: block;
-      height: 100%;
-      width: var(--w);
-      background: linear-gradient(90deg, rgba(37,99,235,1) 0%, rgba(6,182,212,1) 100%);
-      border-radius: 999px;
-    }
-
-    .section {
-      margin-bottom: 16px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-title {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #0f172a;
-      margin: 0;
-    }
-
-    .section-title .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(6,182,212,1) 100%);
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
-    }
-
-    .summary {
-      font-size: 12.9px;
-      line-height: 1.55;
+      font-size: 12.8px;
       color: var(--muted);
-      margin: 0;
+      line-height: 1.45;
     }
 
-    .timeline {
-      display: grid;
-      gap: 12px;
-    }
-
-    .item {
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 12px 12px;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
-    }
-
-    .item-head {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: start;
-      margin-bottom: 6px;
-    }
-
-    .role {
-      margin: 0;
-      font-size: 13.6px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.01em;
-    }
-
-    .date {
-      font-size: 12px;
+    .skill-list strong {
+      color: var(--ink);
       font-weight: 650;
-      color: #334155;
-      white-space: nowrap;
+      margin-right: 6px;
     }
 
-    .org {
-      margin: 0;
-      font-size: 12.5px;
-      color: var(--accent);
-      font-weight: 650;
-    }
-
-    .bullets {
-      margin: 8px 0 0;
-      padding-left: 18px;
+    .cert-block {
+      font-size: 12.8px;
       color: var(--muted);
-      font-size: 12.6px;
-      line-height: 1.5;
-    }
-
-    .bullets li { margin: 0 0 5px; }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .edu-row {
-      display: grid;
-      gap: 4px;
-    }
-
-    .edu-row .degree { font-weight: 800; font-size: 13px; }
-    .edu-row .school { font-size: 12.4px; color: var(--muted); }
-    .edu-row .meta { font-size: 12.2px; color: #334155; font-weight: 600; }
-
-    .proj {
-      display: grid;
-      gap: 8px;
-    }
-
-    .proj .p-title {
-      font-size: 13.2px;
-      font-weight: 800;
+      line-height: 1.65;
       margin: 0;
     }
 
-    .proj .p-desc {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12.6px;
-      line-height: 1.5;
-    }
-
-    .cert-list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 12.6px;
-      line-height: 1.5;
-    }
-
-    .cert-list li { margin: 0 0 6px; }
+    .cert-block a { color: var(--accent); font-weight: 600; }
 
     .footer {
-      margin-top: 10px;
-      border-top: 1px dashed var(--line);
-      padding-top: 10px;
-      font-size: 11.6px;
-      color: #64748b;
+      margin-top: 8px;
+      border-top: 1px dashed var(--line-strong);
+      padding-top: 12px;
+      font-size: 12px;
+      color: var(--muted2);
       display: flex;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
     }
 
-    @page { size: A4; margin: 10mm; }
+    /* Load stagger */
+    .anim {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+
+    .anim-delay-1 { animation-delay: 0.05s; }
+    .anim-delay-2 { animation-delay: 0.12s; }
+    .anim-delay-3 { animation-delay: 0.18s; }
+    .anim-delay-4 { animation-delay: 0.24s; }
+    .anim-delay-5 { animation-delay: 0.30s; }
+    .anim-delay-6 { animation-delay: 0.36s; }
+    .anim-delay-7 { animation-delay: 0.42s; }
+    .anim-delay-8 { animation-delay: 0.48s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .anim {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .section-title::after {
+        transform: scaleX(1);
+        background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--line) 28%);
+        transition: none;
+      }
+
+      .btn:hover { transform: none; }
+      a { transition: none; }
+    }
+
+    @page { size: A4; margin: 12mm; }
 
     @media print {
       html, body {
@@ -400,298 +383,254 @@
         print-color-adjust: exact;
       }
 
-      * {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
       .controls, .no-print { display: none !important; }
-      .page { box-shadow: none; margin: 0; border-radius: 0; }
-      .item { box-shadow: none; }
-      a { text-decoration: none; }
-
-      .sidebar {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      .page {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+      }
+      .resume { padding: 0; }
+      .anim {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+      .section-title::after {
+        transform: scaleX(1) !important;
+        background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--line) 28%) !important;
+        transition: none !important;
+      }
+      a {
+        background-image: none;
+        text-decoration: none;
       }
     }
 
     @media (max-width: 900px) {
-      .page { width: 100%; border-radius: 0; }
-      .resume { grid-template-columns: 1fr; }
-      .sidebar { border-radius: 0; }
+      .page {
+        width: 100%;
+        margin: 12px 0 28px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .resume { padding: 28px 20px 24px; }
+      .name { font-size: 30px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .item-head { grid-template-columns: 1fr; }
+      .date { white-space: normal; }
     }
   </style>
 </head>
 <body>
   <div class="controls no-print">
-    <button class="btn primary" id="printBtn"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
-    <button class="btn" id="downloadBtn"><i class="fa-solid fa-download"></i> Download HTML</button>
+    <button class="btn primary" id="printBtn" type="button"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
+    <button class="btn" id="downloadBtn" type="button"><i class="fa-solid fa-download"></i> Download HTML</button>
   </div>
 
   <div class="page" id="page">
     <div class="resume" id="resume">
-      <aside class="sidebar">
+      <header class="header anim anim-delay-1">
         <h1 class="name">Jayanth Kanala</h1>
         <p class="headline">Power BI Developer • Data Analyst • Full Stack Developer • GenAI / Automation</p>
-        <div class="badge-row">
-          <span class="badge">Python</span>
-          <span class="badge">SQL</span>
-          <span class="badge">Power BI</span>
-          <span class="badge">AWS</span>
-          <span class="badge">Angular / Ionic</span>
+        <div class="contact-row">
+          <span><i class="fa-solid fa-location-dot"></i> Hyderabad, IN 500084</span>
+          <span><i class="fa-solid fa-phone"></i> +91 9573914870</span>
+          <a href="mailto:jkanala0@gmail.com"><i class="fa-solid fa-envelope"></i> jkanala0@gmail.com</a>
+          <a href="https://www.linkedin.com/in/jayanth-kanala-1ab22b1" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://professional-card-astro-ebon-one.vercel.app" target="_blank" rel="noreferrer"><i class="fa-solid fa-globe"></i> Portfolio</a>
         </div>
+      </header>
 
-        <section class="sidebar-section">
-          <h2 class="sidebar-title">Contact</h2>
-          <div class="contact-list">
-            <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Hyderabad, IN 500084</span></div>
-            <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 9573914870</span></div>
-            <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>jkanala0@gmail.com</span></div>
-            <div class="contact-item"><i class="fa-brands fa-linkedin"></i><span><a href="https://www.linkedin.com/in/jayanth-kanala-1ab22b1" target="_blank" rel="noreferrer">linkedin.com/in/jayanth-kanala-1ab22b1</a></span></div>
-            <div class="contact-item"><i class="fa-solid fa-globe"></i><span><a href="https://professional-card-astro-ebon-one.vercel.app" target="_blank" rel="noreferrer">professional-card-astro-ebon-one.vercel.app</a></span></div>
-          </div>
-        </section>
-
-        <section class="sidebar-section">
-          <h2 class="sidebar-title">Core Skills</h2>
-          <div class="skill-bars">
-            <div class="skill">
-              <div class="label"><span>Data Analysis</span><span>Advanced</span></div>
-              <div class="bar"><span style="--w: 88%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Dashboards (Power BI)</span><span>Advanced</span></div>
-              <div class="bar"><span style="--w: 86%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>DuckDB</span><span>Proficient</span></div>
-              <div class="bar"><span style="--w: 90%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Automation (N8n, Make.ai)</span><span>Advanced</span></div>
-              <div class="bar"><span style="--w: 80%"></span></div>
-            </div>            
-            <div class="skill">
-              <div class="label"><span>Python / SQL</span><span>Advanced</span></div>
-              <div class="bar"><span style="--w: 84%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>Full Stack (Angular/Ionic)</span><span>Advanced</span></div>
-              <div class="bar"><span style="--w: 82%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="label"><span>AWS (Cognito, S3, DynamoDB)</span><span>Beginner</span></div>
-              <div class="bar"><span style="--w: 46%"></span></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="sidebar-section">
-          <h2 class="sidebar-title">Tech Stack</h2>
-          <div class="chips">
-            <span class="chip">MySQL</span>
-            <span class="chip">DuckDB</span>
-            <span class="chip">Power BI</span>
-            <span class="chip">N8n</span>
-            <span class="chip">Make.ai</span>
-            <span class="chip">Python</span>
-            <span class="chip">MongoDB</span>
-            <span class="chip">Pandas</span>
-            <span class="chip">Matplotlib</span>
-            <span class="chip">Plotly</span>
-            <span class="chip">Dash</span>
-            <span class="chip">React</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Apache Superset</span>
-            <span class="chip">Databricks</span>
-            <span class="chip">Excel</span>
-            <span class="chip">Jira</span>
-            <span class="chip">Git</span>
-          </div>
-        </section>
-
-      <section class="sidebar-section">
-        <h2 class="sidebar-title">Certifications</h2>
-        <p class="mini">
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JayanthKanala-2137/95A77C1A73F0D1A?sharingId=55981EA6B81913EF"
-            target="_blank">
-            Microsoft Certified: Power BI Data Analyst Associate
-          </a>
-          (Valid: 26/12/2025–27/12/2026)
-          <br />
-
-          <a href="https://coursera.org/share/b7447f43fe486e955edfeabcff48ef52" target="_blank">
-            AWS Cloud Practitioner Exam Prep
-          </a>
-          <br />
-
-          <a href="https://coursera.org/share/379fd5d4e3134cb21f97ce3c6789924b" target="_blank">
-            Python 3 Programming
-          </a>
+      <section class="section anim anim-delay-2">
+        <div class="section-header">
+          <h2 class="section-title">Professional Summary</h2>
+        </div>
+        <p class="summary">
+          Data analysis professional prepared to deliver impactful insights and drive business decisions. Adept in data visualization, statistical analysis, and database management, with a strong focus on teamwork and adaptability. Known for reliability, analytical thinking, and a results-driven approach. Skilled in Python, SQL, and Excel to build robust data solutions and strategic recommendations.
         </p>
       </section>
-      </aside>
 
-      <main class="main">
-        <section class="section">
-          <div class="section-header">
-            <h2 class="section-title"><span class="dot"></span> Professional Summary</h2>
-          </div>
-          <p class="summary">
-            Data analysis professional prepared to deliver impactful insights and drive business decisions. Adept in data visualization, statistical analysis, and database management, with a strong focus on teamwork and adaptability. Known for reliability, analytical thinking, and a results-driven approach. Skilled in Python, SQL, and Excel to build robust data solutions and strategic recommendations.
-          </p>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <h2 class="section-title"><span class="dot"></span> Work Experience</h2>
-          </div>
-
-          <div class="timeline">
-            <article class="item">
-              <div class="item-head">
-                <h3 class="role">Power BI Developer</h3>
-                <div class="date">Oct 2025 – Present</div>
-              </div>
-              <p class="org">Data Cuentos — Hyderabad (Remote)</p>
-              <ul class="bullets">
-                <li>Designed and implemented a responsive web solution that automates OCR for PDF bank statements, improving operational efficiency for motel LLCs.</li>
-                <li>Delivered JSON/CSV/Excel outputs using React + AWS; optimized authentication with Cognito and data workflows with DynamoDB and S3.</li>
-                <li>Integrated Textract, Lambda, CloudWatch, and CloudFront for reliable document-processing pipelines and monitoring.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="item-head">
-                <h3 class="role">Gen AI Developer</h3>
-                <div class="date">May 2025 – Oct 2025</div>
-              </div>
-              <p class="org">Datalake Solutions — Hyderabad (Remote)</p>
-              <ul class="bullets">
-                <li>Designed and implemented a responsive web solution that automates OCR for PDF bank statements, improving operational efficiency for motel LLCs.</li>
-                <li>Delivered JSON/CSV/Excel outputs using React + AWS; optimized authentication with Cognito and data workflows with DynamoDB and S3.</li>
-                <li>Integrated Textract, Lambda, CloudWatch, and CloudFront for reliable document-processing pipelines and monitoring.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="item-head">
-                <h3 class="role">Senior Full Stack Developer</h3>
-                <div class="date">Dec 2024 – May 2025</div>
-              </div>
-              <p class="org">Varistha Ltd — New Jersey (Remote)</p>
-              <ul class="bullets">
-                <li>Developed interactive dashboards in Power BI to visualize KPIs and support stakeholder decision-making.</li>
-                <li>Partnered with stakeholders to gather requirements and align reporting outputs with business needs.</li>
-                <li>Contributed to Clubsports365, a large-scale responsive application integrating REST APIs with Angular, Ionic, Bootstrap, and Capacitor.</li>
-                <li>Performed market research and trend analysis to support strategic planning and opportunity identification.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="item-head">
-                <h3 class="role">Intern — Junior Front End Developer</h3>
-                <div class="date">Oct 2024 – Dec 2024</div>
-              </div>
-              <p class="org">Application Objects Inc — West Chester, PA (Remote)</p>
-              <ul class="bullets">
-                <li>Built responsive applications integrating Python REST APIs with Ionic/Angular, HTML, CSS, and Bootstrap.</li>
-                <li>Executed data querying and manipulation using Python and SQL to strengthen analysis workflows.</li>
-                <li>Authored user-friendly documentation for software applications to improve adoption and maintainability.</li>
-              </ul>
-            </article>
-
-            <article class="item">
-              <div class="item-head">
-                <h3 class="role">Software Developer</h3>
-                <div class="date">Apr 2021 – May 2023</div>
-              </div>
-              <p class="org">Datalake Solutions — Hyderabad</p>
-              <ul class="bullets">
-                <li>Developed cross-platform e-commerce apps (YourBuddy and YourBuddy Captain) using Ionic Framework, Angular, and TypeScript.</li>
-                <li>Delivered multiple static websites for clients with REST API integrations and supporting documentation.</li>
-                <li>Improved user workflows and supported code review practices to raise quality and performance.</li>
-                <li>Intern: Mar 2021 – Apr 2021</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <h2 class="section-title"><span class="dot"></span> Projects</h2>
-          </div>
-
-          <div class="grid-2">
-            <article class="item proj">
-              <h3 class="p-title">NFL Simulator</h3>
-              <p class="p-desc">
-                Developed an NFL game simulation tool in Python using statistical models and real-world team data to predict outcomes and performance metrics. Implemented customizable simulation parameters to analyze team strengths, player stats, and strategies.
-              </p>
-            </article>
-
-            <article class="item proj">
-              <h3 class="p-title">Apartment Hunt Helper</h3>
-              <p class="p-desc">
-                Streamlined the rental search process with a platform to search properties, review landlords, and share experiences using JavaScript, Handlebars, and CSS.
-              </p>
-            </article>
-
-            <article class="item proj" style="grid-column: 1 / -1;">
-              <h3 class="p-title">Dark Web Crawler Data Analysis</h3>
-              <p class="p-desc">
-                Working on data analysis and visualization for a dark web crawler dataset (~0.5B records) using DuckDB and Apache Superset.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <h2 class="section-title"><span class="dot"></span> Education</h2>
-          </div>
-
-          <div class="grid-2">
-            <article class="item edu-row">
-              <div class="degree">M.S. in Computer Science</div>
-              <div class="school">Stevens Institute of Technology — NJ, United States</div>
-              <div class="meta">Dec 2024 • GPA: 4.1/5</div>
-            </article>
-
-            <article class="item edu-row">
-              <div class="degree">B.Tech in Computer Science</div>
-              <div class="school">GITAM School of Technology — Hyderabad</div>
-              <div class="meta">Mar 2021 • GPA: 7.4/10</div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <h2 class="section-title"><span class="dot"></span> Additional Details</h2>
-          </div>
-          <div class="grid-2">
-            <article class="item">
-              <h3 class="role" style="margin-bottom: 6px;">Databases</h3>
-              <div style="color: var(--muted); font-size: 12.6px; line-height: 1.5;">
-                MySQL, DuckDB, MongoDB
-              </div>
-            </article>
-            <article class="item">
-              <h3 class="role" style="margin-bottom: 6px;">Tools</h3>
-              <div style="color: var(--muted); font-size: 12.6px; line-height: 1.5;">
-                Excel, N8N, Databricks, Power BI, Apache Superset, Make.AI, Git, Jira
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <div class="footer">
-          <div><strong>Target roles:</strong> Data Analyst, BI Analyst, Full Stack Developer</div>
-          <div><strong>Availability:</strong> Open to Remote / Hybrid</div>
+      <section class="section anim anim-delay-3">
+        <div class="section-header">
+          <h2 class="section-title">Work Experience</h2>
         </div>
-      </main>
+
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Power BI Developer (Consultant)</h3>
+              <div class="date">Aug 2026 – Present</div>
+            </div>
+            <p class="org">Energy-esi — ADNOC Client (Remote)</p>
+            <ul class="bullets">
+              <li>Built domain fluency in oil &amp; gas operations to frame analytics around ADNOC business needs.</li>
+              <li>Delivered Power BI insights that surface trends and opportunities for stakeholders.</li>
+              <li>Built pixel-perfect reports in Power BI Report Builder with advanced DAX.</li>
+              <li>Connected enterprise data via JDBC/ODBC and wrote SQL for reliable, performant datasets.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Power BI Developer</h3>
+              <div class="date">Oct 2025 – Present</div>
+            </div>
+            <p class="org">Data Cuentos — Hyderabad (Remote)</p>
+            <ul class="bullets">
+              <li>Designed and implemented a responsive web solution that automates OCR for PDF bank statements, improving operational efficiency for motel LLCs.</li>
+              <li>Delivered JSON/CSV/Excel outputs using React + AWS; optimized authentication with Cognito and data workflows with DynamoDB and S3.</li>
+              <li>Integrated Textract, Lambda, CloudWatch, and CloudFront for reliable document-processing pipelines and monitoring.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Gen AI Developer</h3>
+              <div class="date">May 2025 – Oct 2025</div>
+            </div>
+            <p class="org">Datalake Solutions — Hyderabad (Remote)</p>
+            <ul class="bullets">
+              <li>Designed and implemented a responsive web solution that automates OCR for PDF bank statements, improving operational efficiency for motel LLCs.</li>
+              <li>Delivered JSON/CSV/Excel outputs using React + AWS; optimized authentication with Cognito and data workflows with DynamoDB and S3.</li>
+              <li>Integrated Textract, Lambda, CloudWatch, and CloudFront for reliable document-processing pipelines and monitoring.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Senior Full Stack Developer</h3>
+              <div class="date">Dec 2024 – May 2025</div>
+            </div>
+            <p class="org">Varistha Ltd — New Jersey (Remote)</p>
+            <ul class="bullets">
+              <li>Developed interactive dashboards in Power BI to visualize KPIs and support stakeholder decision-making.</li>
+              <li>Partnered with stakeholders to gather requirements and align reporting outputs with business needs.</li>
+              <li>Contributed to Clubsports365, a large-scale responsive application integrating REST APIs with Angular, Ionic, Bootstrap, and Capacitor.</li>
+              <li>Performed market research and trend analysis to support strategic planning and opportunity identification.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Intern — Junior Front End Developer</h3>
+              <div class="date">Oct 2024 – Dec 2024</div>
+            </div>
+            <p class="org">Application Objects Inc — West Chester, PA (Remote)</p>
+            <ul class="bullets">
+              <li>Built responsive applications integrating Python REST APIs with Ionic/Angular, HTML, CSS, and Bootstrap.</li>
+              <li>Executed data querying and manipulation using Python and SQL to strengthen analysis workflows.</li>
+              <li>Authored user-friendly documentation for software applications to improve adoption and maintainability.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3 class="role">Software Developer</h3>
+              <div class="date">Apr 2021 – May 2023</div>
+            </div>
+            <p class="org">Datalake Solutions — Hyderabad</p>
+            <ul class="bullets">
+              <li>Developed cross-platform e-commerce apps (YourBuddy and YourBuddy Captain) using Ionic Framework, Angular, and TypeScript.</li>
+              <li>Delivered multiple static websites for clients with REST API integrations and supporting documentation.</li>
+              <li>Improved user workflows and supported code review practices to raise quality and performance.</li>
+              <li>Intern: Mar 2021 – Apr 2021</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anim anim-delay-4">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="grid-2">
+          <article class="proj">
+            <h3 class="p-title">NFL Simulator</h3>
+            <p class="p-desc">
+              Developed an NFL game simulation tool in Python using statistical models and real-world team data to predict outcomes and performance metrics. Implemented customizable simulation parameters to analyze team strengths, player stats, and strategies.
+            </p>
+          </article>
+          <article class="proj">
+            <h3 class="p-title">Apartment Hunt Helper</h3>
+            <p class="p-desc">
+              Streamlined the rental search process with a platform to search properties, review landlords, and share experiences using JavaScript, Handlebars, and CSS.
+            </p>
+          </article>
+          <article class="proj" style="grid-column: 1 / -1;">
+            <h3 class="p-title">Dark Web Crawler Data Analysis</h3>
+            <p class="p-desc">
+              Working on data analysis and visualization for a dark web crawler dataset (~0.5B records) using DuckDB and Apache Superset.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anim anim-delay-5">
+        <div class="section-header">
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="grid-2">
+          <article class="edu-row">
+            <div class="degree">M.S. in Computer Science</div>
+            <div class="school">Stevens Institute of Technology — NJ, United States</div>
+            <div class="meta">Dec 2024 • GPA: 4.1/5</div>
+          </article>
+          <article class="edu-row">
+            <div class="degree">B.Tech in Computer Science</div>
+            <div class="school">GITAM School of Technology — Hyderabad</div>
+            <div class="meta">Mar 2021 • GPA: 7.4/10</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anim anim-delay-6">
+        <div class="section-header">
+          <h2 class="section-title">Skills &amp; Tech</h2>
+        </div>
+        <div class="skill-list" style="margin-bottom: 12px;">
+          <div><strong>Core:</strong> Data Analysis, Power BI Dashboards, DuckDB, Automation (N8n, Make.ai), Python / SQL, Full Stack (Angular/Ionic), AWS (Cognito, S3, DynamoDB)</div>
+          <div><strong>Databases:</strong> MySQL, DuckDB, MongoDB</div>
+          <div><strong>Tools:</strong> Excel, N8N, Databricks, Power BI, Apache Superset, Make.AI, Git, Jira</div>
+        </div>
+        <div class="chips">
+          <span class="chip">MySQL</span>
+          <span class="chip">DuckDB</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">N8n</span>
+          <span class="chip">Make.ai</span>
+          <span class="chip">Python</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span>
+          <span class="chip">Plotly</span>
+          <span class="chip">Dash</span>
+          <span class="chip">React</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Apache Superset</span>
+          <span class="chip">Databricks</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Jira</span>
+          <span class="chip">Git</span>
+        </div>
+      </section>
+
+      <section class="section anim anim-delay-7">
+        <div class="section-header">
+          <h2 class="section-title">Certifications</h2>
+        </div>
+        <p class="cert-block">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/JayanthKanala-2137/95A77C1A73F0D1A?sharingId=55981EA6B81913EF" target="_blank" rel="noreferrer">Microsoft Certified: Power BI Data Analyst Associate</a>
+          (Valid: 26/12/2025–27/12/2026)<br />
+          <a href="https://coursera.org/share/b7447f43fe486e955edfeabcff48ef52" target="_blank" rel="noreferrer">AWS Cloud Practitioner Exam Prep</a><br />
+          <a href="https://coursera.org/share/379fd5d4e3134cb21f97ce3c6789924b" target="_blank" rel="noreferrer">Python 3 Programming</a>
+        </p>
+      </section>
+
+      <div class="footer anim anim-delay-8">
+        <div><strong>Target roles:</strong> Data Analyst, BI Analyst, Full Stack Developer</div>
+        <div><strong>Availability:</strong> Open to Remote / Hybrid</div>
+      </div>
     </div>
   </div>
 
@@ -707,12 +646,34 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'Jayanth_Kanala_Resume_Designed.html';
+      a.download = 'Jayanth_Kanala_Resume.html';
       document.body.appendChild(a);
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
     });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sections = document.querySelectorAll('.section');
+
+    if (reduceMotion) {
+      sections.forEach((section) => section.classList.add('in-view'));
+    } else if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+      );
+      sections.forEach((section) => observer.observe(section));
+    } else {
+      sections.forEach((section) => section.classList.add('in-view'));
+    }
   </script>
 </body>
 </html>
